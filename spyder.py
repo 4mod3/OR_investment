@@ -8,7 +8,7 @@ import bs4 as bs
 import requests#python的http客户端
 import pickle#用于序列化反序列化
 def GetHuStock():
-    res = requests.get('https://www.banban.cn/gupiao/list_sh.html')
+    res = requests.get('http://www.sse.com.cn/market/sseindex/indexlist/s/i000016/const_list.shtml')
     #防止中文乱码
     res.encoding = res.apparent_encoding
     #使用bsoup的lxml样式
