@@ -2,7 +2,6 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 from cvxopt import matrix, solvers
 
 from Stock import Stock
@@ -38,7 +37,7 @@ if __name__ == "__main__":
     ss = Stock()
     ss.load()
     ss.pick_10()
-    for k in np.arange(0, 1, 0.05):
+    for k in np.arange(0, 0.32, 0.02):
         min_val(10, k, ss.cov_10, ss.expect_RE_10, ss.stock_name_10)
         print(k)
     print(ss.stock_name_10)
