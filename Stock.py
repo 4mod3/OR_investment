@@ -24,9 +24,9 @@ class Stock(object):
 
         for i, stock_dir in enumerate(self.stock_dir_list):
             raw_data = pd.read_csv('./StockDir/{}'.format(stock_dir), index_col='Date')
-            print(raw_data['Adj Close'][-1])
+            #print(raw_data['Adj Close'][-1])
             self.daily_SD[i] = raw_data['Adj Close'].std()
-            self.expect_RE[i] = (raw_data['Adj Close'][-1] - raw_data['Adj Close'][0])*100
+            self.expect_RE[i] = (raw_data['Adj Close'][-1] - raw_data['Adj Close'][0])/*100
             self.cost[i] = raw_data['Adj Close'][-1]*100
         print(self.expect_RE)
         print(self.daily_SD)
