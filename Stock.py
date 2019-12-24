@@ -1,21 +1,26 @@
-import numpy as np
+#!/usr/bin/python
 import os
+import numpy as np
 import pandas as pd
+
 
 
 class Stock(object):
 
     # 初始化变量
+    stock_num = 10
     stock_name_list = [0]*50
     stock_dir_list = [0]*50
     adj_close = pd.DataFrame()
     adj_close_10 = pd.DataFrame()
     expect_RE_50 = [0]*50
-    daily_SD_10 = [0] * 10
-    expect_RE_10 = [0] * 10
-    cost_10 = [0] * 10
-    stock_name_10 = [0]*10
-    corr_10 = pd.DataFrame()
+    daily_SD_10 = [0] * stock_num
+    daily_SD_50 = [0] * 50
+    expect_RE_10 = [0] * stock_num
+    cost_10 = [0] * stock_num
+    stock_name_10 = [0]*stock_num
+    cov_10 = pd.DataFrame()
+    cov_50 = pd.DataFrame()
 
     def __init__(self):
         pass
@@ -35,20 +40,15 @@ class Stock(object):
 
     def pick_10(self):
         arr_index = np.argsort(self.expect_RE_50)
-        for i in range(10):
+        for i in range(self.stock_num):
             self.adj_close_10[i] = self.adj_close[arr_index[-i - 1]]
             self.daily_SD_10[i] = self.adj_close[arr_index[-i - 1]].std()
             self.expect_RE_10[i] = self.expect_RE_50[arr_index[-i-1]]
             self.cost_10[i] = self.adj_close[arr_index[-i - 1]]*100
             self.stock_name_10[i] = self.stock_name_list[arr_index[-i-1]]
-        self.corr_10 = self.adj_close_10.corr()
+        self.cov_10 = self.adj_close_10.cov()
 
-
-ss = Stock()
-ss.load()
-ss.pick_10()
-print(ss.adj_close_10)
-print(ss.daily_SD_10)
-print(ss.expect_RE_10)
-print(ss.stock_name_10)
-print(ss.corr_10)
+    def cal_all(self):
+        self.cov_50 = self.adj_close.cov()
+        print(self.cov_50)
+        self.daily_SD_50 = self.adj_close.std()
