@@ -13,7 +13,7 @@ Project for OR, the investment of Shanghai 50
 
 ---
 
-### 非线性规划
+### 二次规划
 
 + 组合投资方案标准差计算公式：
 

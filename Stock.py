@@ -8,7 +8,7 @@ import pandas as pd
 class Stock(object):
 
     # 初始化变量
-    stock_num = 10
+    stock_num = 20
     stock_name_list = [0]*50
     stock_dir_list = [0]*50
     adj_close = pd.DataFrame()
@@ -44,7 +44,7 @@ class Stock(object):
             self.adj_close_10[i] = self.adj_close[arr_index[-i - 1]]
             self.daily_SD_10[i] = self.adj_close[arr_index[-i - 1]].std()
             self.expect_RE_10[i] = self.expect_RE_50[arr_index[-i-1]]
-            self.cost_10[i] = self.adj_close[arr_index[-i - 1]]*100
+            self.cost_10[i] = self.adj_close[arr_index[-i - 1]][-1]*100
             self.stock_name_10[i] = self.stock_name_list[arr_index[-i-1]]
         self.cov_10 = self.adj_close_10.cov()
 
