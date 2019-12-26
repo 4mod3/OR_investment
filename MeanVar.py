@@ -59,14 +59,14 @@ if __name__ == "__main__":
     # print(ss.cost_10)
 
     # 稳健型投资方案
-    w_old = min_val(20, 0.25, ss.cov_10, ss.expect_RE_10, ss.stock_name_10)
+    w_old = min_val(20, 0.1, ss.cov_10, ss.expect_RE_10, ss.stock_name_10)
     w = np.where(w_old > 1e-6, w_old, 0)
     print(w)
     print('股票名称      ', '投资金额(单位/万元)', '投资比例')
     for i in range(20):
         print(ss.stock_name_10[i], str(w[i] * 10000).ljust(16), w[i])
     print('-------------------')
-    print('预期收益：0.25')
+    print('预期收益率：0.10')
     print('投资风险：', cal_var(w, np.array(ss.cov_10)))
     print('投资收益率：', cal_ret(w, np.array(ss.expect_RE_10)))
 
