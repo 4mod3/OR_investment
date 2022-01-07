@@ -1,6 +1,6 @@
 certifi==2019.11.28
 chardet==3.0.4
-cvxopt==1.2.3
+cvxopt==1.2.7
 cycler==0.10.0
 idna==2.8
 intel-openmp==2019.0
